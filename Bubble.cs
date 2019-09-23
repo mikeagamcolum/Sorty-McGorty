@@ -27,42 +27,45 @@ namespace sorty_mcgorty
             System.Console.Write("Double Bubble Sort: ");
             for (int b = 0; b < y.Count; b++)
             {
-                System.Console.Write(y[b]);
+                System.Console.Write(y[b] + " ");
             }
             System.Console.Write("\n");
             return y;
         }
-        public static string GuidToHash(Guid x)
-        {
-         //   for(int a = 0; a < x.; x++)
-         //  {
-
-            }
-            SHA512.Create(string();
-            return "";
-        }
-        public static List<Guid> BubbleSort(List<Guid> x)
+        public static void BubbleSort(List<Guid> x)
         {
             List<Guid> y = x;
-            for (int b = 0; b < y.Count - 1; b++)
+            List<String> z = new List<String>();
+
+            for(int a = 0; a < y.Count; a++)
             {
-                for (int a = 1; a < y.Count - b; a++)
+                z.Insert(a, y[a].ToString());
+            }
+
+            for (int a = 0; a < z.Count - 1; a++)
+            {
+                for(int b = 0; b < z[0].Length; b++) // this loop compares characters
                 {
-                    if (y[a] < y[a - 1])
+                    if(Convert.ToInt32(z[a][b]) > Convert.ToInt32(z[a+1][b])) // gets ascii value of char to sort with
                     {
-                        double g = y[a];
-                        y[a] = y[a - 1];
-                        y[a - 1] = g;
+                        // swaps values
+                        string temp = z[a + 1];
+                        z[a + 1] = z[a];
+                        z[a] = temp;
                     }
+                    else if (Convert.ToInt32(z[a][b]) < Convert.ToInt32(z[a + 1][b]))
+                    {
+                        break; // because value is less than its successor, no need to continue this loop
+                    }
+                    // characters are equal, continue loop
                 }
             }
-            System.Console.Write("Guid Bubble Sort: ");
-            for (int b = 0; b < y.Count; b++)
+            System.Console.Write("\nGUID Bubble Sort: ");
+            for (int b = 0; b < z.Count; b++)
             {
-                System.Console.Write(y[b]);
+                System.Console.Write("\n" + z[b]);
             }
             System.Console.Write("\n");
-            return y;
         }
     }
 }
